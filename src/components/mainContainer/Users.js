@@ -12,7 +12,7 @@ class Users extends Component {
 
     componentDidMount(){
         
-        fetch("http://localhost:3001/api/users/", { method: "POST"} )
+        fetch("http://localhost:3001/api/users/", { method: "GET"} )
                 .then(response => response.json())
                 .then(data => {
                         

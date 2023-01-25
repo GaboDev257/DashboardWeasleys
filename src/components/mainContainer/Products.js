@@ -7,7 +7,6 @@ class Products extends Component {
         this.state = {
             count: 0,
             products: 0,
-            lastProduct: 0
           };
     }
 
@@ -21,7 +20,6 @@ class Products extends Component {
                             {
                                 count: data.meta.count,
                                 products: data.products,
-                                lastProduct: 0
                                 
                             }
                         )})

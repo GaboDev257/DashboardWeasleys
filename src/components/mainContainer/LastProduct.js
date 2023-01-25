@@ -14,7 +14,7 @@ class LastProduct extends Component {
 
     componentDidMount(){
         
-        fetch("http://localhost:3001/api/products/lastProduct", { method: "POST"} )
+        fetch("http://localhost:3001/api/products/lastProduct", { method: "GET"} )
                 .then(response => response.json())
                 .then(data => {
                     this.setState(
@@ -42,7 +42,7 @@ class LastProduct extends Component {
                         </div>
                         <div className="card-body">
                             <div className="text-center">
-                                <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: '25rem' }} src={this.state.lastProduct.imageURL} alt="" />
+                                <a href={`http://localhost:3001/products/detail/${this.state.lastProduct.id}`} target="_blank" rel="noopener noreferrer"><img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: '25rem' }} src={this.state.lastProduct.imageURL} alt="" /></a>
                             </div>
                             <h6 className="title-sp">Nombre del producto:</h6>
                             <p>{this.state.lastProduct.name}</p>

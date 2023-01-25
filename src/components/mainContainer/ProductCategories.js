@@ -5,32 +5,42 @@ class ProductsCategories extends Component {
     constructor() {
         super();
         this.state = {
-            productBestSeller: "0",
-            productWorstSeller: "0",
-            userBS: "0",
-            userWS: "0"
+            count: "0",
+            moreSell: "0",
+            encuentraTuCasa: "0",
+            nuevosIngresos: "0",
         };
     }
     componentDidMount() {
-        console.log("Me monté!!");
-        fetch("http://localhost:5001/api/products/productSeller/", { method: "POST" })
+        fetch("http://localhost:3001/api/products/moreSell", { method: "GET" })
             .then(response => response.json())
             .then(data => {
                 this.setState(
                     {
-                        productBestSeller: data.data.productBS,
-                        productWorstSeller: data.data.productWS
+                        moreSell: data.products.category_Id === "100",
+                        count: data.meta.count,
                     }
                 )
             })
             .catch(error => console.log(error));
-        fetch("http://localhost:5001/api/products/usersSeller/", { method: "POST" })
+        fetch("http://localhost:3001/api/products/", { method: "GET" })
             .then(response => response.json())
-            .then(dataUser => {
+            .then(data => {
                 this.setState(
                     {
-                        userBS: dataUser.data.userBS,
-                        userWS: dataUser.data.userWS
+                        encuentraTuCasa: data.products.category_Id === "101",
+                        count: data.count,
+                    }
+                )
+            })
+            .catch(error => console.log(error));
+        fetch("http://localhost:3001/api/products/", { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                this.setState(
+                    {
+                        nuevosIngresos: data.products.category_Id === "102",
+                        count: data.count,
                     }
                 )
             })
@@ -48,17 +58,17 @@ class ProductsCategories extends Component {
                             <div className="row">
                                 <div className="col-md-4 mb-4">
                                     <div className="text-white shadow">
-                                        <div className="card-body bgcat">Más vendidos: {this.state.productBestSeller}</div>
+                                        <div className="card-body bgcat">Más vendidos: 7 </div>
                                     </div>
                                 </div>
                                 <div className="col-md-4 mb-4">
                                     <div className="text-white shadow">
-                                        <div className="card-body bgcat">Encuentra tu casa: {this.state.productWorstSeller}</div>
+                                        <div className="card-body bgcat">Encuentra tu casa: 8</div>
                                     </div>
                                 </div>
                                 <div className="col-md-4 mb-4">
                                     <div className="text-white shadow">
-                                        <div className="card-body bgcat">Nuevos ingresos: {this.state.productWorstSeller}</div>
+                                        <div className="card-body bgcat">Nuevos ingresos: 6</div>
                                     </div>
                                 </div>
                             </div>

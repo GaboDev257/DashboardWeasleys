@@ -5,7 +5,7 @@ function NavBar () {
         <React.Fragment>
             <ul className="navbar-nav color-pp  sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <div className="sidebar-brand-icon">
+                <div className="sidebar-brand-icon bg-white rounded-circle">
                     <i><img className="img-profile rounded-circle" src="images/company-logo.png" width="60" alt="" /></i>
                 </div>
                 <div className="sidebar-brand-text mt-2 mx-3">Weasley's Wizard Wheezes</div>
